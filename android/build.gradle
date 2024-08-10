@@ -14,6 +14,7 @@ buildscript {
 allprojects {
     repositories {
         google()
+        jcenter()
         mavenCentral()
     }
 }
@@ -24,6 +25,14 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(":app")
+}
+
+subprojects {
+    beforeEvaluate { project ->
+        if (project.name == "flutter_localization") {
+            project.buildscript.dependencies.classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+        }
+    }
 }
 
 tasks.register("clean", Delete) {

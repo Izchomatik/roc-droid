@@ -1,7 +1,7 @@
 package org.rocstreaming.connector
 
 import Backend
-import org.rocstreaming.rocdroid.SenderReceiverService
+import org.rocstreaming.service.SenderReceiverService
 
 private class Connector : Backend {
   override fun getHostLanguage(): String {
