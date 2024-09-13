@@ -15,7 +15,6 @@ PlatformException _createConnectionError(String channelName) {
   );
 }
 
-
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
 }
@@ -27,7 +26,8 @@ class Backend {
   /// BinaryMessenger will be used which routes to the host platform.
   Backend({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
       : __pigeon_binaryMessenger = binaryMessenger,
-        __pigeon_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
+        __pigeon_messageChannelSuffix =
+            messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
   final BinaryMessenger? __pigeon_binaryMessenger;
 
   static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();
@@ -35,8 +35,10 @@ class Backend {
   final String __pigeon_messageChannelSuffix;
 
   Future<void> startReceiver() async {
-    final String __pigeon_channelName = 'dev.flutter.pigeon.roc_droid_package.Backend.startReceiver$__pigeon_messageChannelSuffix';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+    final String __pigeon_channelName =
+        'dev.flutter.pigeon.roc_droid_package.Backend.startReceiver$__pigeon_messageChannelSuffix';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
@@ -57,8 +59,10 @@ class Backend {
   }
 
   Future<void> stopReceiver() async {
-    final String __pigeon_channelName = 'dev.flutter.pigeon.roc_droid_package.Backend.stopReceiver$__pigeon_messageChannelSuffix';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+    final String __pigeon_channelName =
+        'dev.flutter.pigeon.roc_droid_package.Backend.stopReceiver$__pigeon_messageChannelSuffix';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
@@ -79,8 +83,10 @@ class Backend {
   }
 
   Future<bool> isReceiverAlive() async {
-    final String __pigeon_channelName = 'dev.flutter.pigeon.roc_droid_package.Backend.isReceiverAlive$__pigeon_messageChannelSuffix';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+    final String __pigeon_channelName =
+        'dev.flutter.pigeon.roc_droid_package.Backend.isReceiverAlive$__pigeon_messageChannelSuffix';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
@@ -106,8 +112,10 @@ class Backend {
   }
 
   Future<void> startSender(String ip) async {
-    final String __pigeon_channelName = 'dev.flutter.pigeon.roc_droid_package.Backend.startSender$__pigeon_messageChannelSuffix';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+    final String __pigeon_channelName =
+        'dev.flutter.pigeon.roc_droid_package.Backend.startSender$__pigeon_messageChannelSuffix';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
@@ -128,8 +136,10 @@ class Backend {
   }
 
   Future<void> stopSender() async {
-    final String __pigeon_channelName = 'dev.flutter.pigeon.roc_droid_package.Backend.stopSender$__pigeon_messageChannelSuffix';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+    final String __pigeon_channelName =
+        'dev.flutter.pigeon.roc_droid_package.Backend.stopSender$__pigeon_messageChannelSuffix';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
@@ -150,8 +160,10 @@ class Backend {
   }
 
   Future<bool> isSenderAlive() async {
-    final String __pigeon_channelName = 'dev.flutter.pigeon.roc_droid_package.Backend.isSenderAlive$__pigeon_messageChannelSuffix';
-    final BasicMessageChannel<Object?> __pigeon_channel = BasicMessageChannel<Object?>(
+    final String __pigeon_channelName =
+        'dev.flutter.pigeon.roc_droid_package.Backend.isSenderAlive$__pigeon_messageChannelSuffix';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
       __pigeon_channelName,
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
