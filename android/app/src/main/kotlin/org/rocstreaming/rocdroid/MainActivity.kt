@@ -1,5 +1,6 @@
 package org.rocstreaming.rocdroid
 
+import AndroidConnector
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
@@ -7,10 +8,8 @@ import android.media.AudioManager
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
-
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.embedding.engine.plugins.FlutterPlugin
 import org.rocstreaming.connector.AndroidConnectorImpl
 import org.rocstreaming.service.SenderReceiverService
 
@@ -29,22 +28,16 @@ class MainActivity: FlutterActivity() {
     private val senderReceiverServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(componentName: ComponentName, binder: IBinder) {
             senderReceiverService = (binder as SenderReceiverService.LocalBinder).getService()
-
-            // senderFragment.onServiceConnected(
-            //     senderReceiverService,
-            //     { showActiveIcon(1) },
-            //     { hideActiveIcon(1) }
-            // )
-            // receiverFragment.onServiceConnected(
-            //     senderReceiverService,
-            //     { showActiveIcon(0) },
-            //     { hideActiveIcon(0) }
-            // )
+            
+            Log.d(LOG_TAG, "On service connected")
 
             AndroidConnectorImpl.senderReceiverService = senderReceiverService
         }
 
         override fun onServiceDisconnected(componentName: ComponentName) {
+
+            Log.d(LOG_TAG, "On service disconnected")
+
             senderReceiverService.removeListeners()
         }
     }

@@ -8,44 +8,34 @@ private const val LOG_TAG = "[rocdroid.Connector]"
 
 class AndroidConnectorImpl : AndroidConnector {
     companion object {
-        var senderReceiverService : SenderReceiverService? = null
+        lateinit var senderReceiverService : SenderReceiverService
     }
 
     override fun startReceiver() {
         Log.d(LOG_TAG, "Try start Receiver")
-        senderReceiverService?.startReceiver()
+        senderReceiverService.startReceiver()
     }
 
     override fun stopReceiver() {
         Log.d(LOG_TAG, "Try stop Receiver")
-        senderReceiverService?.stopReceiver()
+        senderReceiverService.stopReceiver()
     }
 
     override fun isReceiverAlive(): Boolean {
-        return if (senderReceiverService != null) {
-            senderReceiverService!!.isReceiverAlive()
-        }
-        else {
-            false
-        }
+        return senderReceiverService.isReceiverAlive()
     }
 
     override fun startSender(ip: String) {
         Log.d(LOG_TAG, "Try start Sender")
-        senderReceiverService?.startSender(ip, null)
+        senderReceiverService.startSender(ip, null)
     }
 
     override fun stopSender() {
         Log.d(LOG_TAG, "Try stop Sender")
-        senderReceiverService?.stopSender()
+        senderReceiverService.stopSender()
     }
 
     override fun isSenderAlive(): Boolean {
-        return if (senderReceiverService != null) {
-            senderReceiverService!!.isReceiverAlive()
-        }
-        else {
-            false
-        }
+        return senderReceiverService.isReceiverAlive()
     }
 }
