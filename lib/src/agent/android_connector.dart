@@ -4,7 +4,7 @@ import 'package:pigeon/pigeon.dart';
   dartOut: 'lib/src/agent/android_connector.g.dart',
   dartOptions: DartOptions(),
   kotlinOut:
-      'android/app/src/main/kotlin/org/rocstreaming/connector/AndroidConnector.g.kt',
+      'android/app/src/main/kotlin/org/rocstreaming/rocdroid/AndroidConnector.g.kt',
   kotlinOptions: KotlinOptions(),
   dartPackageName: 'roc_droid',
 ))

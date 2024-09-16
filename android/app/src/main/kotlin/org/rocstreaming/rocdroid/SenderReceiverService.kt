@@ -1,4 +1,4 @@
-package org.rocstreaming.service
+package org.rocstreaming.rocdroid
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -91,7 +91,8 @@ class SenderReceiverService : Service() {
             IntentFilter().apply {
                 addAction(BROADCAST_STOP_SENDER_ACTION)
                 addAction(BROADCAST_STOP_RECEIVER_ACTION)
-            }
+            },
+            RECEIVER_EXPORTED
         )
     }
 
@@ -129,21 +130,21 @@ class SenderReceiverService : Service() {
             this,
             0,
             mainActivityIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         val stopSenderIntent = Intent(BROADCAST_STOP_SENDER_ACTION)
         val pendingStopSenderIntent = PendingIntent.getBroadcast(
             this@SenderReceiverService,
             0,
             stopSenderIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         val stopReceiverIntent = Intent(BROADCAST_STOP_RECEIVER_ACTION)
         val pendingStopReceiverIntent = PendingIntent.getBroadcast(
             this@SenderReceiverService,
             0,
             stopReceiverIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         val stopSenderAction = Notification.Action.Builder(
             Icon.createWithResource(this@SenderReceiverService, R.drawable.ic_stop),

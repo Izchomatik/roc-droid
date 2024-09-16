@@ -1,10 +1,10 @@
-package org.rocstreaming.connector
+package org.rocstreaming.rocdroid
 
 import AndroidConnector
 import android.util.Log
-import org.rocstreaming.service.SenderReceiverService
+import org.rocstreaming.rocdroid.SenderReceiverService
 
-private const val LOG_TAG = "[rocdroid.Connector]"
+private const val LOG_TAG = "[rocdroid.AndroidConnectorImpl]"
 
 class AndroidConnectorImpl : AndroidConnector {
     companion object {

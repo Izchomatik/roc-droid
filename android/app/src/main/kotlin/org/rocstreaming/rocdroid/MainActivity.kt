@@ -10,14 +10,14 @@ import android.os.IBinder
 import android.util.Log
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
-import org.rocstreaming.connector.AndroidConnectorImpl
-import org.rocstreaming.service.SenderReceiverService
+import org.rocstreaming.rocdroid.AndroidConnectorImpl
+import org.rocstreaming.rocdroid.SenderReceiverService
 
 private const val LOG_TAG = "[rocdroid.MainActivity]"
 
 class MainActivity: FlutterActivity() {
     private lateinit var senderReceiverService: SenderReceiverService
-    
+
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
@@ -28,7 +28,7 @@ class MainActivity: FlutterActivity() {
     private val senderReceiverServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(componentName: ComponentName, binder: IBinder) {
             senderReceiverService = (binder as SenderReceiverService.LocalBinder).getService()
-            
+
             Log.d(LOG_TAG, "On service connected")
 
             AndroidConnectorImpl.senderReceiverService = senderReceiverService
