@@ -4,7 +4,7 @@ import AndroidConnector
 import android.util.Log
 import org.rocstreaming.rocdroid.SenderReceiverService
 
-private const val LOG_TAG = "[rocdroid.AndroidConnectorImpl]"
+private const val LOG_TAG = "rocdroid.AndroidConnectorImpl"
 
 class AndroidConnectorImpl : AndroidConnector {
     companion object {
@@ -12,12 +12,12 @@ class AndroidConnectorImpl : AndroidConnector {
     }
 
     override fun startReceiver() {
-        Log.d(LOG_TAG, "Try start Receiver")
+        Log.i(LOG_TAG, "Try start Receiver")
         senderReceiverService.startReceiver()
     }
 
     override fun stopReceiver() {
-        Log.d(LOG_TAG, "Try stop Receiver")
+        Log.i(LOG_TAG, "Try stop Receiver")
         senderReceiverService.stopReceiver()
     }
 
@@ -26,12 +26,12 @@ class AndroidConnectorImpl : AndroidConnector {
     }
 
     override fun startSender(ip: String) {
-        Log.d(LOG_TAG, "Try start Sender")
+        Log.i(LOG_TAG, "Try start Sender")
         senderReceiverService.startSender(ip, null)
     }
 
     override fun stopSender() {
-        Log.d(LOG_TAG, "Try stop Sender")
+        Log.i(LOG_TAG, "Try stop Sender")
         senderReceiverService.stopSender()
     }
 

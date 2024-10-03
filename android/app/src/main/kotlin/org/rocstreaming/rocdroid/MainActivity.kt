@@ -13,7 +13,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import org.rocstreaming.rocdroid.AndroidConnectorImpl
 import org.rocstreaming.rocdroid.SenderReceiverService
 
-private const val LOG_TAG = "[rocdroid.MainActivity]"
+private const val LOG_TAG = "rocdroid.MainActivity"
 
 class MainActivity: FlutterActivity() {
     private lateinit var senderReceiverService: SenderReceiverService
@@ -29,14 +29,14 @@ class MainActivity: FlutterActivity() {
         override fun onServiceConnected(componentName: ComponentName, binder: IBinder) {
             senderReceiverService = (binder as SenderReceiverService.LocalBinder).getService()
 
-            Log.d(LOG_TAG, "On service connected")
+            Log.i(LOG_TAG, "On service connected")
 
             AndroidConnectorImpl.senderReceiverService = senderReceiverService
         }
 
         override fun onServiceDisconnected(componentName: ComponentName) {
 
-            Log.d(LOG_TAG, "On service disconnected")
+            Log.i(LOG_TAG, "On service disconnected")
 
             senderReceiverService.removeListeners()
         }
@@ -45,7 +45,7 @@ class MainActivity: FlutterActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.d(LOG_TAG, "Create Main Activity")
+        Log.i(LOG_TAG, "Create Main Activity")
 
         val serviceIntent = Intent(this, SenderReceiverService::class.java)
         bindService(serviceIntent, senderReceiverServiceConnection, BIND_AUTO_CREATE)

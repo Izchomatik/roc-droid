@@ -52,7 +52,7 @@ private const val BROADCAST_STOP_SENDER_ACTION =
 private const val BROADCAST_STOP_RECEIVER_ACTION =
     "org.rocstreaming.rocdroid.NotificationReceiverStopAction"
 
-private const val LOG_TAG = "[rocdroid.SenderReceiverService]"
+private const val LOG_TAG = "rocdroid.SenderReceiverService"
 
 class SenderReceiverService : Service() {
     private var receiverThread: Thread? = null
@@ -77,13 +77,13 @@ class SenderReceiverService : Service() {
     }
 
     override fun onBind(intent: Intent): IBinder {
-        Log.d(LOG_TAG, "Bind Service")
+        Log.i(LOG_TAG, "Bind Service")
 
         return binder
     }
 
     override fun onCreate() {
-        Log.d(LOG_TAG, "Creating Sender/Receiver Service")
+        Log.i(LOG_TAG, "Creating Sender/Receiver Service")
 
         createNotificationChannel()
         registerReceiver(
@@ -97,7 +97,7 @@ class SenderReceiverService : Service() {
     }
 
     override fun onDestroy() {
-        Log.d(LOG_TAG, "Destroying Sender/Receiver Service")
+        Log.i(LOG_TAG, "Destroying Sender/Receiver Service")
 
         super.onDestroy()
         unregisterReceiver(notificationStopActionReceiver)
@@ -221,7 +221,7 @@ class SenderReceiverService : Service() {
     }
 
     fun startSender(ip: String, projection: MediaProjection?) {
-        Log.d(LOG_TAG, "Starting Sender")
+        Log.i(LOG_TAG, "Starting Sender")
 
         if (senderThread?.isAlive == true) return
 
@@ -283,7 +283,7 @@ class SenderReceiverService : Service() {
     }
 
     fun startReceiver() {
-        Log.d(LOG_TAG, "Starting Receiver")
+        Log.i(LOG_TAG, "Starting Receiver")
 
         if (receiverThread?.isAlive == true) return
 
@@ -336,13 +336,13 @@ class SenderReceiverService : Service() {
     }
 
     fun stopSender() {
-        Log.d(LOG_TAG, "Stopping Sender")
+        Log.i(LOG_TAG, "Stopping Sender")
 
         senderThread?.interrupt()
     }
 
     fun stopReceiver() {
-        Log.d(LOG_TAG, "Stopping Receiver")
+        Log.i(LOG_TAG, "Stopping Receiver")
 
         receiverThread?.interrupt()
     }
@@ -360,7 +360,7 @@ class SenderReceiverService : Service() {
     }
 
     private fun startForegroundService(sending: Boolean, receiving: Boolean) {
-        Log.d(
+        Log.i(
             LOG_TAG,
             String.format(
                 "Starting Foreground Service for %s %s",
@@ -374,7 +374,7 @@ class SenderReceiverService : Service() {
     }
 
     private fun stopForegroundService() {
-        Log.d(LOG_TAG, "Stopping Foreground Service")
+        Log.i(LOG_TAG, "Stopping Foreground Service")
 
         isForegroundRunning = false
         stopForeground(true)
